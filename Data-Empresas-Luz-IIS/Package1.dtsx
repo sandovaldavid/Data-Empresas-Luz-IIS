@@ -1,0 +1,780 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/13/2025 12:30:19 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="AN5-DS"
+  DTS:CreatorName="AN5-DS\Sando"
+  DTS:DTSID="{5A4B1CD4-F85B-404F-9265-F739FC610E18}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{A50690CA-8F77-4098-B602-B4DEA696BFAC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AN5-DS.DB_Datos]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5DA2A80B-F907-4DE2-9885-B0CC60D75C19}"
+      DTS:ObjectName="AN5-DS.DB_Datos">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=AN5-DS;Initial Catalog=DB_Datos;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{5DA2A80B-F907-4DE2-9885-B0CC60D75C19}AN5-DS.DB_Datos;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AN5-DS.DB_DatosElectronorte]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EF11E229-55CD-49F7-8220-755A0516DB6E}"
+      DTS:ObjectName="AN5-DS.DB_DatosElectronorte">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=AN5-DS;Initial Catalog=DB_DatosElectronorte;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{EF11E229-55CD-49F7-8220-755A0516DB6E}AN5-DS.DB_DatosElectronorte;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[AN5-DS.DM_ConsumoEnergetico]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{08E6A81B-97C3-47F6-A492-57222787D3F0}"
+      DTS:ObjectName="AN5-DS.DM_ConsumoEnergetico">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=AN5-DS;Initial Catalog=DM_ConsumoEnergetico;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{08E6A81B-97C3-47F6-A492-57222787D3F0}AN5-DS.DM_ConsumoEnergetico;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Migrar Datos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A4810D85-3E86-4A07-BA9C-8BBF24F316C3}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Migrar Datos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Migrar Datos\DB_Datos"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DB_Datos"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Empresas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrar Datos\DB_Datos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AN5-DS.DB_Datos]"
+                  connectionManagerRefId="Package.ConnectionManagers[AN5-DS.DB_Datos]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[ID_EMPRESA_db]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA_db]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[ID_EMPRESA_db]"
+                      name="ID_EMPRESA_db"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]"
+                      name="ID_EMPRESA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[NOMBRE_EMPRESA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_EMPRESA]"
+                      length="20"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[NOMBRE_EMPRESA]"
+                      name="NOMBRE_EMPRESA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DEPARTAMENTO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[DEPARTAMENTO]"
+                      length="64"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DEPARTAMENTO]"
+                      name="DEPARTAMENTO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[PROVINCIA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[PROVINCIA]"
+                      length="100"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[PROVINCIA]"
+                      name="PROVINCIA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DISTRITO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[DISTRITO]"
+                      length="100"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DISTRITO]"
+                      name="DISTRITO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[UBIGEO]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[UBIGEO]"
+                      length="6"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[UBIGEO]"
+                      name="UBIGEO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CARTERA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[CARTERA]"
+                      length="10"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CARTERA]"
+                      name="CARTERA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[TARIFA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[TARIFA]"
+                      length="10"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[TARIFA]"
+                      name="TARIFA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_DESDE]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[FECHA_CONSUMO_DESDE]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_DESDE]"
+                      name="FECHA_CONSUMO_DESDE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_HASTA]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[FECHA_CONSUMO_HASTA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_HASTA]"
+                      name="FECHA_CONSUMO_HASTA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[IMPORTE]"
+                      name="IMPORTE"
+                      precision="12"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CONSUMO]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[CONSUMO]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CONSUMO]"
+                      name="CONSUMO"
+                      precision="12"
+                      scale="5"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA_db]"
+                      dataType="i4"
+                      name="ID_EMPRESA_db" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[ID_EMPRESA]"
+                      dataType="i4"
+                      name="ID_EMPRESA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[NOMBRE_EMPRESA]"
+                      dataType="wstr"
+                      length="20"
+                      name="NOMBRE_EMPRESA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[DEPARTAMENTO]"
+                      dataType="wstr"
+                      length="64"
+                      name="DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[PROVINCIA]"
+                      dataType="wstr"
+                      length="100"
+                      name="PROVINCIA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[DISTRITO]"
+                      dataType="wstr"
+                      length="100"
+                      name="DISTRITO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[UBIGEO]"
+                      dataType="wstr"
+                      length="6"
+                      name="UBIGEO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[CARTERA]"
+                      dataType="wstr"
+                      length="10"
+                      name="CARTERA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[TARIFA]"
+                      dataType="wstr"
+                      length="10"
+                      name="TARIFA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[FECHA_CONSUMO_DESDE]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_CONSUMO_DESDE" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[FECHA_CONSUMO_HASTA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_CONSUMO_HASTA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[IMPORTE]"
+                      dataType="numeric"
+                      name="IMPORTE"
+                      precision="12"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].ExternalColumns[CONSUMO]"
+                      dataType="numeric"
+                      name="CONSUMO"
+                      precision="12"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA_db]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA_db]"
+                      name="ID_EMPRESA_db" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ID_EMPRESA]"
+                      name="ID_EMPRESA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[NOMBRE_EMPRESA]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[NOMBRE_EMPRESA]"
+                      name="NOMBRE_EMPRESA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[DEPARTAMENTO]"
+                      dataType="wstr"
+                      length="64"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[DEPARTAMENTO]"
+                      name="DEPARTAMENTO" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[PROVINCIA]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[PROVINCIA]"
+                      name="PROVINCIA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[DISTRITO]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[DISTRITO]"
+                      name="DISTRITO" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[UBIGEO]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[UBIGEO]"
+                      name="UBIGEO" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[CARTERA]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[CARTERA]"
+                      name="CARTERA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[TARIFA]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[TARIFA]"
+                      name="TARIFA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[FECHA_CONSUMO_DESDE]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[FECHA_CONSUMO_DESDE]"
+                      name="FECHA_CONSUMO_DESDE" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[FECHA_CONSUMO_HASTA]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[FECHA_CONSUMO_HASTA]"
+                      name="FECHA_CONSUMO_HASTA" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                      dataType="numeric"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[IMPORTE]"
+                      name="IMPORTE"
+                      precision="12"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[CONSUMO]"
+                      dataType="numeric"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[CONSUMO]"
+                      name="CONSUMO"
+                      precision="12"
+                      scale="5" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Migrar Datos\DB_DatosElectronorte"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DB_DatosElectronorte"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DatosElectronorte]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Migrar Datos\DB_DatosElectronorte.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[AN5-DS.DB_DatosElectronorte]"
+                  connectionManagerRefId="Package.ConnectionManagers[AN5-DS.DB_DatosElectronorte]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[ID_EMPRESA]"
+                      cachedDataType="i4"
+                      cachedName="ID_EMPRESA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPRESA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[ID_EMPRESA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[NOMBRE_EMPRESA]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="NOMBRE_EMPRESA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_EMPRESA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[NOMBRE_EMPRESA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[DEPARTAMENTO]"
+                      cachedDataType="wstr"
+                      cachedLength="64"
+                      cachedName="DEPARTAMENTO"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DEPARTAMENTO]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[PROVINCIA]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="PROVINCIA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[PROVINCIA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[PROVINCIA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[DISTRITO]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="DISTRITO"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[DISTRITO]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[DISTRITO]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[UBIGEO]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="UBIGEO"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[UBIGEO]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[UBIGEO]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[CARTERA]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CARTERA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[CARTERA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CARTERA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[TARIFA]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="TARIFA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[TARIFA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[TARIFA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[FECHA_CONSUMO_DESDE]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA_CONSUMO_DESDE"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_CONSUMO_DESDE]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_DESDE]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[FECHA_CONSUMO_HASTA]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="FECHA_CONSUMO_HASTA"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_CONSUMO_HASTA]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[FECHA_CONSUMO_HASTA]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[IMPORTE]"
+                      cachedDataType="numeric"
+                      cachedName="IMPORTE"
+                      cachedPrecision="12"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[IMPORTE]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[IMPORTE]" />
+                    <inputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].Columns[CONSUMO]"
+                      cachedDataType="numeric"
+                      cachedName="CONSUMO"
+                      cachedPrecision="12"
+                      cachedScale="5"
+                      externalMetadataColumnId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[CONSUMO]"
+                      lineageId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output].Columns[CONSUMO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[ID_EMPRESA]"
+                      dataType="i4"
+                      name="ID_EMPRESA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[NOMBRE_EMPRESA]"
+                      dataType="wstr"
+                      length="20"
+                      name="NOMBRE_EMPRESA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[DEPARTAMENTO]"
+                      dataType="wstr"
+                      length="64"
+                      name="DEPARTAMENTO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[PROVINCIA]"
+                      dataType="wstr"
+                      length="100"
+                      name="PROVINCIA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[DISTRITO]"
+                      dataType="wstr"
+                      length="100"
+                      name="DISTRITO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[UBIGEO]"
+                      dataType="wstr"
+                      length="6"
+                      name="UBIGEO" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[CARTERA]"
+                      dataType="wstr"
+                      length="10"
+                      name="CARTERA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[TARIFA]"
+                      dataType="wstr"
+                      length="10"
+                      name="TARIFA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_CONSUMO_DESDE]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_CONSUMO_DESDE" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[FECHA_CONSUMO_HASTA]"
+                      dataType="dbTimeStamp"
+                      name="FECHA_CONSUMO_HASTA" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[IMPORTE]"
+                      dataType="numeric"
+                      name="IMPORTE"
+                      precision="12"
+                      scale="5" />
+                    <externalMetadataColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input].ExternalColumns[CONSUMO]"
+                      dataType="numeric"
+                      name="CONSUMO"
+                      precision="12"
+                      scale="5" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Migrar Datos\DB_DatosElectronorte.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_DatosElectronorte.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Migrar Datos\DB_DatosElectronorte.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Migrar Datos\DB_DatosElectronorte.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Migrar Datos.Paths[OLE DB Source Output]"
+              endId="Package\Migrar Datos\DB_DatosElectronorte.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Migrar Datos\DB_Datos.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Migrar Datos"
+          TopLeft="144.285714592861,108.588235198936" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Migrar Datos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124.8,41.6"
+          Id="Package\Migrar Datos\DB_Datos"
+          TopLeft="259.166662804782,92.999998614192" />
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Migrar Datos\DB_DatosElectronorte"
+          TopLeft="559.99999165535,224.999996647239" />
+        <EdgeLayout
+          Id="Package\Migrar Datos.Paths[OLE DB Source Output]"
+          TopLeft="321.566662804782,134.599998614192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="329.233328850567,90.3999980330467"
+              Start="0,0"
+              End="329.233328850567,82.8999980330467">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1999990165233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.1999990165233"
+                    Point2="0,45.1999990165233"
+                    Point3="4,45.1999990165233" />
+                  <mssgle:LineSegment
+                    End="325.233328850567,45.1999990165233" />
+                  <mssgle:CubicBezierSegment
+                    Point1="325.233328850567,45.1999990165233"
+                    Point2="329.233328850567,45.1999990165233"
+                    Point3="329.233328850567,49.1999990165233" />
+                  <mssgle:LineSegment
+                    End="329.233328850567,82.8999980330467" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrar Datos\DB_Datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Migrar Datos\DB_DatosElectronorte">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
